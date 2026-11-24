@@ -20,24 +20,27 @@ A squared Euclidean distance test on the raw delta avoids a square root. A displ
 
 ## Numeric behavior and limitations
 
-Inputs use Python's `numbers.Real` interface, excluding booleans and nonfinite values. Rational inputs are preserved exactly; other real inputs are taken at their Python `float` value. Internal arithmetic uses `fractions.Fraction`, so a large integer coordinate can still resolve a one-unit step. The returned tuple can contain `Fraction` values, not necessarily floats. With smoothing below one, exact output denominators can grow over a long uninterrupted stream, increasing arithmetic cost. No real-time latency guarantee is made.
+Inputs use Python's `numbers.Real` interface, excluding booleans and nonfinite values. Rational inputs are preserved exactly on ingestion; other real inputs are taken at their Python `float` value, as before. Raw displacements and the squared jump comparison use exact `fractions.Fraction` arithmetic, so a large integer coordinate can still resolve a one-unit step. The returned tuple can contain `Fraction` values, not necessarily floats.
+
+With smoothing below one, the filter evaluates the blend of the exact input term and the stored previous output. It keeps the resulting fraction when its denominator fits the precision budget; otherwise, it truncates toward zero on a binary grid and uses that result both for output and for feedback. The budget accounts for gain, smoothing, and the highest displacement-denominator bit length since the filter history was cleared, plus 48 guard bits. The budget does not increase with the number of updates for fixed-size inputs. The truncation contributes less than `2**-48` absolute error per axis relative to the exact recurrence, including accumulated error from prior updates (see `REVIEW.md`). Smoothing equal to one remains exact. A very small decay tail can truncate to zero; very large or precise inputs still cost more, and no real-time latency guarantee is made.
 
 This is a synchronous, standard-library motion core. It does not capture video, read a clock, click, or move an OS pointer.
 
 ## Verification
 
-Command (from this directory, Python 3.14.9):
+Commands (from this directory, CPython 3.14.9):
 
 ```sh
-python -m unittest discover -s tests -v
+PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s tests -v
+PYTHONDONTWRITEBYTECODE=1 python benchmark_stream.py
 ```
 
-Tests were written and run before `motion.py` existed. The first run exited 1 with `ModuleNotFoundError: No module named 'motion'` and `FAILED (errors=1)`. After implementation, every listed test reported `ok`; the run exited 0:
+The local suite exited 0 after the continuous-stream repair:
 
 ```text
-Ran 11 tests in 0.005s
+Ran 16 tests in 0.357s
 
 OK
 ```
 
-Only the local suite was run; the controller's independent suite was not inspected or executed.
+The 6,000-update replay took 0.409494 s after repair (12.527899 s before). See `REVIEW.md` for the failing regression on inherited code, complete timing results, and limitations. The controller's independent suite was not inspected or executed.

@@ -102,3 +102,59 @@ class MotionTests(unittest.TestCase):
         tracker = MotionTracker(max_jump=base)
         tracker.update((base, -base))
         self.assertEqual(tracker.update((base+1, 1-base)), (1, 1))
+
+    def test_continuous_float_smoothing_does_not_grow_output_precision(self):
+        gain, alpha = 1.3, 0.3
+        tracker = MotionTracker(sensitivity=gain, smoothing=alpha)
+        previous = (320.0, 240.0)
+        actual = tracker.update(previous)
+        self.assertEqual(actual, (0, 0))
+        expected = (0.0, 0.0)
+        max_error = 0.0
+        for i in range(1, 4097):
+            point = (320.0 + 0.37 * (31 - abs(i % 62 - 31)),
+                     240.0 - 0.61 * (23 - abs(i % 46 - 23)))
+            expected = tuple(alpha * (gain * (new - old)) + (1 - alpha) * out
+                             for new, old, out in zip(point, previous, expected))
+            actual = tracker.update(point)
+            max_error = max(max_error, *(abs(float(a) - e) for a, e in zip(actual, expected)))
+            previous = point
+        self.assertLessEqual(max_error, 1e-9)
+        # Both final values are of camera scale. Test representation growth,
+        # not elapsed time (which is machine/load dependent).
+        largest = max(part.bit_length() for axis in actual for part in axis.as_integer_ratio())
+        self.assertLessEqual(largest, 256, 'smoothing accumulated unbounded precision')
+
+    def test_jump_uses_exact_distance_even_when_float_rounds_to_limit(self):
+        tracker = MotionTracker(max_jump=5.0)
+        tracker.update((0.0, 0.0))
+        outside = (math.nextafter(3.0, math.inf), 4.0)
+        self.assertEqual(tracker.update(outside), (0, 0))
+        self.assertEqual(tracker.update((outside[0], 5.0)), (0, 1))
+
+    def test_extreme_finite_scaled_outputs_are_not_lost(self):
+        for gain in (Fraction(1, 10**400), 10**400):
+            with self.subTest(gain=gain):
+                tracker = MotionTracker(sensitivity=gain, smoothing=Fraction(1, 2))
+                tracker.update((0, 0))
+                self.assertEqual(tracker.update((2, -2)), (gain, -gain))
+                self.assertEqual(tracker.update((2, -2)), (Fraction(gain, 2), -Fraction(gain, 2)))
+
+    def test_nonbinary_fraction_is_not_narrowed_out_of_range(self):
+        base = 10**400
+        gain = Fraction(base, 3)
+        tracker = MotionTracker(sensitivity=gain, smoothing=Fraction(1, 3), max_jump=1)
+        tracker.update((base, -base))
+        self.assertEqual(tracker.update((base + 1, -base)), (Fraction(base, 9), 0))
+
+    def test_tiny_delta_survives_initial_decay_then_settles_at_rest(self):
+        alpha = Fraction(1, 3)
+        tiny = Fraction(1, 10**400)
+        tracker = MotionTracker(smoothing=alpha)
+        tracker.update((0, 0))
+        self.assertEqual(tracker.update((tiny, -tiny)), (tiny * alpha, -tiny * alpha))
+        out = tracker.update((tiny, -tiny))
+        self.assertEqual(out, (tiny * 2 / 9, -tiny * 2 / 9))
+        for _ in range(512):
+            out = tracker.update((tiny, -tiny))
+        self.assertEqual(out, (0, 0))
