@@ -1,0 +1,14 @@
+test_configuration_requires_finite_real_non_boolean_values_in_range (test_motion.MotionTrackerTests.test_configuration_requires_finite_real_non_boolean_values_in_range) ... ok
+test_first_position_sets_baseline_then_returns_delta (test_motion.MotionTrackerTests.test_first_position_sets_baseline_then_returns_delta) ... ok
+test_invalid_position_does_not_change_baseline_or_smoothed_output (test_motion.MotionTrackerTests.test_invalid_position_does_not_change_baseline_or_smoothed_output) ... ok
+test_jump_threshold_uses_raw_euclidean_distance_and_allows_equality (test_motion.MotionTrackerTests.test_jump_threshold_uses_raw_euclidean_distance_and_allows_equality) ... ok
+test_pause_ignores_valid_positions_until_resume_reacquires_baseline (test_motion.MotionTrackerTests.test_pause_ignores_valid_positions_until_resume_reacquires_baseline) ... ok
+test_position_must_be_none_or_two_finite_real_non_boolean_coordinates (test_motion.MotionTrackerTests.test_position_must_be_none_or_two_finite_real_non_boolean_coordinates) ... ok
+test_reset_clears_motion_but_preserves_paused_status (test_motion.MotionTrackerTests.test_reset_clears_motion_but_preserves_paused_status) ... ok
+test_sensitivity_is_applied_before_exponential_smoothing (test_motion.MotionTrackerTests.test_sensitivity_is_applied_before_exponential_smoothing) ... ok
+test_tracking_loss_clears_baseline_and_output (test_motion.MotionTrackerTests.test_tracking_loss_clears_baseline_and_output) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.002s
+
+OK

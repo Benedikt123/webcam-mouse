@@ -1,0 +1,11 @@
+test_finite_gain_with_overflowing_intermediate (__main__.NumericProbes.test_finite_gain_with_overflowing_intermediate) ... ok
+test_fraction_diagonal_equal_threshold (__main__.NumericProbes.test_fraction_diagonal_equal_threshold) ... ok
+test_huge_integer_configuration_and_small_motion (__main__.NumericProbes.test_huge_integer_configuration_and_small_motion) ... ok
+test_huge_rational_configuration (__main__.NumericProbes.test_huge_rational_configuration) ... ok
+test_large_mixed_coordinate_small_motion (__main__.NumericProbes.test_large_mixed_coordinate_small_motion) ... ok
+test_tiny_perpendicular_displacement_over_threshold (__main__.NumericProbes.test_tiny_perpendicular_displacement_over_threshold) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+OK

@@ -1,0 +1,35 @@
+test_01_first_baseline (__main__.Acceptance.test_01_first_baseline) ... ok
+test_02_relative (__main__.Acceptance.test_02_relative) ... ok
+test_03_stationary (__main__.Acceptance.test_03_stationary) ... ok
+test_04_sensitivity (__main__.Acceptance.test_04_sensitivity) ... ok
+test_05_smoothing_initial (__main__.Acceptance.test_05_smoothing_initial) ... ok
+test_06_smoothing_recurrence (__main__.Acceptance.test_06_smoothing_recurrence) ... ok
+test_07_loss_reacquisition (__main__.Acceptance.test_07_loss_reacquisition) ... ok
+test_08_loss_clears_smoothing (__main__.Acceptance.test_08_loss_clears_smoothing) ... ok
+test_09_threshold_equal (__main__.Acceptance.test_09_threshold_equal) ... ok
+test_10_euclidean_jump (__main__.Acceptance.test_10_euclidean_jump) ... ok
+test_11_jump_before_sensitivity (__main__.Acceptance.test_11_jump_before_sensitivity) ... ok
+test_12_jump_clears_filter (__main__.Acceptance.test_12_jump_clears_filter) ... ok
+test_13_pause (__main__.Acceptance.test_13_pause) ... ok
+test_14_resume_rebase (__main__.Acceptance.test_14_resume_rebase) ... ok
+test_15_resume_clears_even_if_active (__main__.Acceptance.test_15_resume_clears_even_if_active) ... ok
+test_16_reset (__main__.Acceptance.test_16_reset) ... ok
+test_17_reset_preserves_pause (__main__.Acceptance.test_17_reset_preserves_pause) ... ok
+test_18_idempotent_pause (__main__.Acceptance.test_18_idempotent_pause) ... ok
+test_19_config_sensitivity (__main__.Acceptance.test_19_config_sensitivity) ... ok
+test_20_config_smoothing (__main__.Acceptance.test_20_config_smoothing) ... ok
+test_21_config_max_jump (__main__.Acceptance.test_21_config_max_jump) ... ok
+test_22_invalid_positions (__main__.Acceptance.test_22_invalid_positions) ... ok
+test_23_invalid_preserves_baseline_and_filter (__main__.Acceptance.test_23_invalid_preserves_baseline_and_filter) ... ok
+test_24_paused_still_validates (__main__.Acceptance.test_24_paused_still_validates) ... ok
+test_25_list_float_coordinates (__main__.Acceptance.test_25_list_float_coordinates) ... ok
+test_26_instances_independent (__main__.Acceptance.test_26_instances_independent) ... ok
+test_27_repeated_none (__main__.Acceptance.test_27_repeated_none) ... ok
+test_28_negative_coordinates (__main__.Acceptance.test_28_negative_coordinates) ... ok
+test_29_stationary_filter_decay (__main__.Acceptance.test_29_stationary_filter_decay) ... ok
+test_30_mutable_input_not_retained (__main__.Acceptance.test_30_mutable_input_not_retained) ... ok
+
+----------------------------------------------------------------------
+Ran 30 tests in 0.008s
+
+OK

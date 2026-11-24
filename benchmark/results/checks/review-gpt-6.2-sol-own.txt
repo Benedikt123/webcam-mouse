@@ -1,0 +1,21 @@
+test_baseline_and_relative_motion (test_motion.MotionTests.test_baseline_and_relative_motion) ... ok
+test_continuous_float_smoothing_does_not_grow_output_precision (test_motion.MotionTests.test_continuous_float_smoothing_does_not_grow_output_precision) ... ok
+test_extreme_finite_scaled_outputs_are_not_lost (test_motion.MotionTests.test_extreme_finite_scaled_outputs_are_not_lost) ... ok
+test_fractional_real_inputs (test_motion.MotionTests.test_fractional_real_inputs) ... ok
+test_invalid_configuration (test_motion.MotionTests.test_invalid_configuration) ... ok
+test_invalid_input_preserves_baseline_and_output (test_motion.MotionTests.test_invalid_input_preserves_baseline_and_output) ... ok
+test_jump_uses_exact_distance_even_when_float_rounds_to_limit (test_motion.MotionTests.test_jump_uses_exact_distance_even_when_float_rounds_to_limit) ... ok
+test_large_integer_coordinates_keep_small_motion (test_motion.MotionTests.test_large_integer_coordinates_keep_small_motion) ... ok
+test_loss_and_reacquisition (test_motion.MotionTests.test_loss_and_reacquisition) ... ok
+test_nonbinary_fraction_is_not_narrowed_out_of_range (test_motion.MotionTests.test_nonbinary_fraction_is_not_narrowed_out_of_range) ... ok
+test_pause_validation_reset_and_resume (test_motion.MotionTests.test_pause_validation_reset_and_resume) ... ok
+test_raw_threshold_equality_jump_and_rebase (test_motion.MotionTests.test_raw_threshold_equality_jump_and_rebase) ... ok
+test_reset_or_resume_clears_active_history (test_motion.MotionTests.test_reset_or_resume_clears_active_history) ... ok
+test_sensitivity_and_smoothing (test_motion.MotionTests.test_sensitivity_and_smoothing) ... ok
+test_small_gain_cannot_hide_jump (test_motion.MotionTests.test_small_gain_cannot_hide_jump) ... ok
+test_tiny_delta_survives_initial_decay_then_settles_at_rest (test_motion.MotionTests.test_tiny_delta_survives_initial_decay_then_settles_at_rest) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.347s
+
+OK

@@ -1,0 +1,22 @@
+test_axis_at_limit_and_nonzero_other_axis_is_a_jump (test_motion.MotionTrackerTests.test_axis_at_limit_and_nonzero_other_axis_is_a_jump) ... ok
+test_finite_float_coordinates_can_have_overflowing_raw_delta (test_motion.MotionTrackerTests.test_finite_float_coordinates_can_have_overflowing_raw_delta) ... ok
+test_first_sample_and_relative_motion (test_motion.MotionTrackerTests.test_first_sample_and_relative_motion) ... ok
+test_float_threshold_boundaries (test_motion.MotionTrackerTests.test_float_threshold_boundaries) ... ok
+test_fractional_input_and_configuration (test_motion.MotionTrackerTests.test_fractional_input_and_configuration) ... ok
+test_invalid_config (test_motion.MotionTrackerTests.test_invalid_config) ... ok
+test_invalid_first_sample_does_not_establish_baseline (test_motion.MotionTrackerTests.test_invalid_first_sample_does_not_establish_baseline) ... ok
+test_invalid_position_does_not_change_baseline_or_output (test_motion.MotionTrackerTests.test_invalid_position_does_not_change_baseline_or_output) ... ok
+test_large_and_small_rational_thresholds (test_motion.MotionTrackerTests.test_large_and_small_rational_thresholds) ... ok
+test_large_integer_coordinates_preserve_small_delta (test_motion.MotionTrackerTests.test_large_integer_coordinates_preserve_small_delta) ... ok
+test_lost_tracking_clears_baseline_and_output (test_motion.MotionTrackerTests.test_lost_tracking_clears_baseline_and_output) ... ok
+test_mixed_integer_and_float_coordinates_keep_small_delta (test_motion.MotionTrackerTests.test_mixed_integer_and_float_coordinates_keep_small_delta) ... ok
+test_mutating_a_list_does_not_move_the_baseline (test_motion.MotionTrackerTests.test_mutating_a_list_does_not_move_the_baseline) ... ok
+test_pause_resume_and_reset_preserve_the_right_state (test_motion.MotionTrackerTests.test_pause_resume_and_reset_preserve_the_right_state) ... ok
+test_scaling_overflow_does_not_poison_smoothed_output (test_motion.MotionTrackerTests.test_scaling_overflow_does_not_poison_smoothed_output) ... ok
+test_sensitivity_then_output_smoothing (test_motion.MotionTrackerTests.test_sensitivity_then_output_smoothing) ... ok
+test_threshold_is_euclidean_strict_and_precedes_scaling (test_motion.MotionTrackerTests.test_threshold_is_euclidean_strict_and_precedes_scaling) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.006s
+
+OK

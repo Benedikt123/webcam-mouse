@@ -1,0 +1,44 @@
+test_axes_are_smoothed_independently (test_motion.MotionTrackerTests.test_axes_are_smoothed_independently) ... ok
+test_axis_threshold_and_just_over_threshold (test_motion.MotionTrackerTests.test_axis_threshold_and_just_over_threshold) ... ok
+test_default_signed_movement (test_motion.MotionTrackerTests.test_default_signed_movement) ... ok
+test_exponential_smoothing_uses_previous_output (test_motion.MotionTrackerTests.test_exponential_smoothing_uses_previous_output) ... ok
+test_finite_positions_whose_subtraction_overflows_are_a_jump (test_motion.MotionTrackerTests.test_finite_positions_whose_subtraction_overflows_are_a_jump) ... ok
+test_first_position_establishes_baseline (test_motion.MotionTrackerTests.test_first_position_establishes_baseline) ... ok
+test_fraction_threshold_equality_is_exact (test_motion.MotionTrackerTests.test_fraction_threshold_equality_is_exact) ... ok
+test_fractional_motion_is_not_rounded (test_motion.MotionTrackerTests.test_fractional_motion_is_not_rounded) ... ok
+test_fractions_are_real_numbers (test_motion.MotionTrackerTests.test_fractions_are_real_numbers) ... ok
+test_huge_integer_threshold_geometry (test_motion.MotionTrackerTests.test_huge_integer_threshold_geometry) ... ok
+test_instances_have_independent_state (test_motion.MotionTrackerTests.test_instances_have_independent_state) ... ok
+test_invalid_configuration_types (test_motion.MotionTrackerTests.test_invalid_configuration_types) ... ok
+test_invalid_input_does_not_establish_baseline (test_motion.MotionTrackerTests.test_invalid_input_does_not_establish_baseline) ... ok
+test_invalid_input_while_paused_still_raises (test_motion.MotionTrackerTests.test_invalid_input_while_paused_still_raises) ... ok
+test_invalid_positions_preserve_baseline_and_output (test_motion.MotionTrackerTests.test_invalid_positions_preserve_baseline_and_output) ... ok
+test_invalid_positions_raise_value_error (test_motion.MotionTrackerTests.test_invalid_positions_raise_value_error) ... ok
+test_jump_rebases_and_clears_previous_output (test_motion.MotionTrackerTests.test_jump_rebases_and_clears_previous_output) ... ok
+test_large_finite_integers_are_not_rejected (test_motion.MotionTrackerTests.test_large_finite_integers_are_not_rejected) ... ok
+test_large_float_threshold_geometry_does_not_square_overflow (test_motion.MotionTrackerTests.test_large_float_threshold_geometry_does_not_square_overflow) ... ok
+test_lists_are_accepted_and_baseline_is_copied (test_motion.MotionTrackerTests.test_lists_are_accepted_and_baseline_is_copied) ... ok
+test_loss_before_first_position (test_motion.MotionTrackerTests.test_loss_before_first_position) ... ok
+test_mixed_huge_integer_and_float_threshold_geometry (test_motion.MotionTrackerTests.test_mixed_huge_integer_and_float_threshold_geometry) ... ok
+test_nonfinite_configuration (test_motion.MotionTrackerTests.test_nonfinite_configuration) ... ok
+test_nonpositive_configuration (test_motion.MotionTrackerTests.test_nonpositive_configuration) ... ok
+test_pause_and_resume_are_idempotent (test_motion.MotionTrackerTests.test_pause_and_resume_are_idempotent) ... ok
+test_pause_ignores_positions_and_resume_rebaselines (test_motion.MotionTrackerTests.test_pause_ignores_positions_and_resume_rebaselines) ... ok
+test_positional_constructor_arguments (test_motion.MotionTrackerTests.test_positional_constructor_arguments) ... ok
+test_reset_active_clears_baseline_and_output (test_motion.MotionTrackerTests.test_reset_active_clears_baseline_and_output) ... ok
+test_reset_preserves_paused_status (test_motion.MotionTrackerTests.test_reset_preserves_paused_status) ... ok
+test_resume_even_when_active_clears_motion_history (test_motion.MotionTrackerTests.test_resume_even_when_active_clears_motion_history) ... ok
+test_sensitivity_does_not_clamp_output (test_motion.MotionTrackerTests.test_sensitivity_does_not_clamp_output) ... ok
+test_smoothing_one_has_no_history (test_motion.MotionTrackerTests.test_smoothing_one_has_no_history) ... ok
+test_smoothing_upper_bound (test_motion.MotionTrackerTests.test_smoothing_upper_bound) ... ok
+test_threshold_equality_is_allowed (test_motion.MotionTrackerTests.test_threshold_equality_is_allowed) ... ok
+test_threshold_is_euclidean_not_per_axis (test_motion.MotionTrackerTests.test_threshold_is_euclidean_not_per_axis) ... ok
+test_threshold_precedes_sensitivity_and_smoothing (test_motion.MotionTrackerTests.test_threshold_precedes_sensitivity_and_smoothing) ... ok
+test_tiny_float_threshold_geometry_does_not_square_underflow (test_motion.MotionTrackerTests.test_tiny_float_threshold_geometry_does_not_square_underflow) ... ok
+test_tracking_loss_clears_baseline_and_output (test_motion.MotionTrackerTests.test_tracking_loss_clears_baseline_and_output) ... ok
+test_tracking_loss_preserves_paused_status (test_motion.MotionTrackerTests.test_tracking_loss_preserves_paused_status) ... ok
+
+----------------------------------------------------------------------
+Ran 39 tests in 0.010s
+
+OK

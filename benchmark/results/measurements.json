@@ -1,0 +1,813 @@
+[
+  {
+    "round": 1,
+    "model": "gpt-6.2-astra",
+    "base": "8b7deea04a109fc12b5e6c6aa047dba5bf738022",
+    "seconds": 122.07,
+    "exit_code": 0,
+    "usage": {
+      "model": "gpt-6.2-astra",
+      "provider": "openai-codex",
+      "input_tokens": 158388,
+      "output_tokens": 4088,
+      "cache_read_tokens": 107648,
+      "reasoning_tokens": 790,
+      "total_tokens": 162476,
+      "api_calls": 11,
+      "cost_status": "included",
+      "completed": true,
+      "partial": false,
+      "failed": false,
+      "turn_exit_reason": "text_response(finish_reason=stop)",
+      "auxiliary": {
+        "api_calls": 1,
+        "input_tokens": 307,
+        "output_tokens": 19,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "estimated_cost_usd": 0,
+        "total_tokens": 326,
+        "by_task": {
+          "title_generation": {
+            "api_calls": 1,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": 0,
+            "estimated_cost_usd": 0,
+            "input_tokens": 307,
+            "output_tokens": 19,
+            "reasoning_tokens": 0
+          }
+        }
+      },
+      "total_including_auxiliary": {
+        "estimated_cost_usd": 0.0,
+        "total_tokens": 162802,
+        "api_calls": 12
+      },
+      "uncached_input_tokens": 50740
+    },
+    "tools": 12,
+    "tool_names": {
+      "patch": 1,
+      "read_file": 1,
+      "search_files": 1,
+      "terminal": 6,
+      "write_file": 3
+    },
+    "tests": {
+      "acceptance": {
+        "rc": 0,
+        "count": 30,
+        "failures": null
+      },
+      "numeric": {
+        "rc": 0,
+        "count": 6,
+        "failures": null
+      },
+      "own": {
+        "rc": 0,
+        "count": 11,
+        "failures": null
+      }
+    },
+    "stress": {
+      "updates": 2400,
+      "batch_size": 400,
+      "batch_seconds": [
+        0.07745831878855824,
+        0.18065977888181806,
+        0.30023759696632624,
+        0.38405843498185277,
+        0.48977733706124127,
+        0.5874818658921868
+      ],
+      "total_seconds": 2.0196733325719833,
+      "last_over_first": 7.584490279163749
+    },
+    "motion_lines": 76,
+    "commit": "640d28d16124dfb6d7da2a67b66813c341efc940",
+    "branch": "benchmark/gpt-6.2-astra",
+    "state_machine_replay_passed": true
+  },
+  {
+    "round": 1,
+    "model": "gpt-6.2-sol",
+    "base": "8b7deea04a109fc12b5e6c6aa047dba5bf738022",
+    "seconds": 239.77,
+    "exit_code": 0,
+    "usage": {
+      "model": "gpt-6.2-sol",
+      "provider": "openai-codex",
+      "input_tokens": 264803,
+      "output_tokens": 9407,
+      "cache_read_tokens": 175872,
+      "reasoning_tokens": 3761,
+      "total_tokens": 274210,
+      "api_calls": 14,
+      "cost_status": "included",
+      "completed": true,
+      "partial": false,
+      "failed": false,
+      "turn_exit_reason": "text_response(finish_reason=stop)",
+      "auxiliary": {
+        "api_calls": 1,
+        "input_tokens": 307,
+        "output_tokens": 19,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "estimated_cost_usd": 0,
+        "total_tokens": 326,
+        "by_task": {
+          "title_generation": {
+            "api_calls": 1,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": 0,
+            "estimated_cost_usd": 0,
+            "input_tokens": 307,
+            "output_tokens": 19,
+            "reasoning_tokens": 0
+          }
+        }
+      },
+      "total_including_auxiliary": {
+        "estimated_cost_usd": 0.0,
+        "total_tokens": 274536,
+        "api_calls": 15
+      },
+      "uncached_input_tokens": 88931
+    },
+    "tools": 18,
+    "tool_names": {
+      "patch": 4,
+      "read_file": 1,
+      "terminal": 10,
+      "write_file": 3
+    },
+    "tests": {
+      "acceptance": {
+        "rc": 0,
+        "count": 30,
+        "failures": null
+      },
+      "numeric": {
+        "rc": 0,
+        "count": 6,
+        "failures": null
+      },
+      "own": {
+        "rc": 0,
+        "count": 17,
+        "failures": null
+      }
+    },
+    "stress": {
+      "updates": 2400,
+      "batch_size": 400,
+      "batch_seconds": [
+        0.004072059877216816,
+        0.003965639974921942,
+        0.003973014187067747,
+        0.004014655947685242,
+        0.00395627785474062,
+        0.003954232903197408
+      ],
+      "total_seconds": 0.023935880744829774,
+      "last_over_first": 0.9710645281326411
+    },
+    "motion_lines": 131,
+    "commit": "6d54e739c957419aadcad7318e51499370c9b903",
+    "branch": "benchmark/gpt-6.2-sol",
+    "state_machine_replay_passed": true
+  },
+  {
+    "round": 1,
+    "model": "gpt-6.1-sol",
+    "base": "8b7deea04a109fc12b5e6c6aa047dba5bf738022",
+    "seconds": 263.09,
+    "exit_code": 0,
+    "usage": {
+      "model": "gpt-6.1-sol",
+      "provider": "openai-codex",
+      "input_tokens": 207435,
+      "output_tokens": 10924,
+      "cache_read_tokens": 165248,
+      "reasoning_tokens": 3438,
+      "total_tokens": 218359,
+      "api_calls": 12,
+      "cost_status": "included",
+      "completed": true,
+      "partial": false,
+      "failed": false,
+      "turn_exit_reason": "text_response(finish_reason=stop)",
+      "auxiliary": {
+        "api_calls": 1,
+        "input_tokens": 307,
+        "output_tokens": 19,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "estimated_cost_usd": 0,
+        "total_tokens": 326,
+        "by_task": {
+          "title_generation": {
+            "api_calls": 1,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": 0,
+            "estimated_cost_usd": 0,
+            "input_tokens": 307,
+            "output_tokens": 19,
+            "reasoning_tokens": 0
+          }
+        }
+      },
+      "total_including_auxiliary": {
+        "estimated_cost_usd": 0.0,
+        "total_tokens": 218685,
+        "api_calls": 13
+      },
+      "uncached_input_tokens": 42187
+    },
+    "tools": 11,
+    "tool_names": {
+      "patch": 1,
+      "read_file": 1,
+      "search_files": 1,
+      "terminal": 4,
+      "write_file": 4
+    },
+    "tests": {
+      "acceptance": {
+        "rc": 0,
+        "count": 30,
+        "failures": null
+      },
+      "numeric": {
+        "rc": 1,
+        "count": 6,
+        "failures": "failures=3"
+      },
+      "own": {
+        "rc": 0,
+        "count": 39,
+        "failures": null
+      }
+    },
+    "stress": {
+      "updates": 2400,
+      "batch_size": 400,
+      "batch_seconds": [
+        0.0030078559648245573,
+        0.0029730009846389294,
+        0.0029608409386128187,
+        0.003040832933038473,
+        0.0029788429383188486,
+        0.0031470300164073706
+      ],
+      "total_seconds": 0.018108403775840998,
+      "last_over_first": 1.0462701848793252
+    },
+    "motion_lines": 100,
+    "commit": "2dfbd9f47a613b258d6a558e083f884fa8499152",
+    "branch": "benchmark/gpt-6.1-sol",
+    "state_machine_replay_passed": true
+  },
+  {
+    "round": 1,
+    "model": "gpt-6-luna",
+    "base": "8b7deea04a109fc12b5e6c6aa047dba5bf738022",
+    "seconds": 169.3,
+    "exit_code": 0,
+    "usage": {
+      "model": "gpt-6-luna",
+      "provider": "openai-codex",
+      "input_tokens": 348199,
+      "output_tokens": 6298,
+      "cache_read_tokens": 299008,
+      "reasoning_tokens": 1516,
+      "total_tokens": 354497,
+      "api_calls": 19,
+      "cost_status": "included",
+      "completed": true,
+      "partial": false,
+      "failed": false,
+      "turn_exit_reason": "text_response(finish_reason=stop)",
+      "auxiliary": {
+        "api_calls": 1,
+        "input_tokens": 307,
+        "output_tokens": 15,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "estimated_cost_usd": 0,
+        "total_tokens": 322,
+        "by_task": {
+          "title_generation": {
+            "api_calls": 1,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": 0,
+            "estimated_cost_usd": 0,
+            "input_tokens": 307,
+            "output_tokens": 15,
+            "reasoning_tokens": 0
+          }
+        }
+      },
+      "total_including_auxiliary": {
+        "estimated_cost_usd": 0.0,
+        "total_tokens": 354819,
+        "api_calls": 20
+      },
+      "uncached_input_tokens": 49191
+    },
+    "tools": 19,
+    "tool_names": {
+      "read_file": 2,
+      "search_files": 2,
+      "skill_view": 1,
+      "terminal": 9,
+      "write_file": 5
+    },
+    "tests": {
+      "acceptance": {
+        "rc": 0,
+        "count": 30,
+        "failures": null
+      },
+      "numeric": {
+        "rc": 1,
+        "count": 6,
+        "failures": "failures=4, errors=1"
+      },
+      "own": {
+        "rc": 0,
+        "count": 9,
+        "failures": null
+      }
+    },
+    "stress": {
+      "updates": 2400,
+      "batch_size": 400,
+      "batch_seconds": [
+        0.0018688880372792482,
+        0.0018125639762729406,
+        0.0018458168487995863,
+        0.001796347787603736,
+        0.001998188905417919,
+        0.0018792820628732443
+      ],
+      "total_seconds": 0.011201087618246675,
+      "last_over_first": 1.005561609570324
+    },
+    "motion_lines": 90,
+    "commit": "28679a5403eb565ff928ea53a1f92e27e9012fbe",
+    "branch": "benchmark/gpt-6-luna",
+    "state_machine_replay_passed": true
+  },
+  {
+    "round": 2,
+    "model": "gpt-6.2-astra",
+    "base": "575e6b942b8c380a9017ecb6ec8f804c47030cff",
+    "seconds": 273.99,
+    "exit_code": 0,
+    "usage": {
+      "model": "gpt-6.2-astra",
+      "provider": "openai-codex",
+      "input_tokens": 376766,
+      "output_tokens": 7964,
+      "cache_read_tokens": 282752,
+      "reasoning_tokens": 2823,
+      "total_tokens": 384730,
+      "api_calls": 17,
+      "cost_status": "included",
+      "completed": true,
+      "partial": false,
+      "failed": false,
+      "turn_exit_reason": "text_response(finish_reason=stop)",
+      "auxiliary": {
+        "api_calls": 1,
+        "input_tokens": 312,
+        "output_tokens": 14,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "estimated_cost_usd": 0,
+        "total_tokens": 326,
+        "by_task": {
+          "title_generation": {
+            "api_calls": 1,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": 0,
+            "estimated_cost_usd": 0,
+            "input_tokens": 312,
+            "output_tokens": 14,
+            "reasoning_tokens": 0
+          }
+        }
+      },
+      "total_including_auxiliary": {
+        "estimated_cost_usd": 0.0,
+        "total_tokens": 385056,
+        "api_calls": 18
+      },
+      "uncached_input_tokens": 94014
+    },
+    "tools": 27,
+    "tool_names": {
+      "execute_code": 1,
+      "patch": 7,
+      "read_file": 5,
+      "search_files": 1,
+      "terminal": 11,
+      "write_file": 2
+    },
+    "tests": {
+      "acceptance": {
+        "rc": 0,
+        "count": 30,
+        "failures": null
+      },
+      "numeric": {
+        "rc": 0,
+        "count": 6,
+        "failures": null
+      },
+      "own": {
+        "rc": 0,
+        "count": 14,
+        "failures": null
+      }
+    },
+    "stress": {
+      "updates": 2400,
+      "batch_size": 400,
+      "batch_seconds": [
+        0.028597273165360093,
+        0.028312557842582464,
+        0.028375082882121205,
+        0.028497838880866766,
+        0.028634331887587905,
+        0.02873172191902995
+      ],
+      "total_seconds": 0.17114880657754838,
+      "last_over_first": 1.0047014536278485
+    },
+    "motion_lines": 95,
+    "branch": "benchmark/review-gpt-6.2-astra",
+    "commit": "e5dd8afad86b08ee4e7520b092463fbbc4ee2057",
+    "supplementary": {
+      "model": "gpt-6.2-astra",
+      "replay_rc": 0,
+      "mixed_stress": {
+        "updates": 2400,
+        "batch_size": 400,
+        "batch_seconds": [
+          0.028976163128390908,
+          0.028887232998386025,
+          0.0300388450268656,
+          0.028795007150620222,
+          0.029456370044499636,
+          0.030043062986806035
+        ],
+        "total_seconds": 0.17619668133556843,
+        "last_over_first": 1.036819914827501
+      }
+    },
+    "state_machine_replay_passed": true
+  },
+  {
+    "round": 2,
+    "model": "gpt-6.2-sol",
+    "base": "575e6b942b8c380a9017ecb6ec8f804c47030cff",
+    "seconds": 380.35,
+    "exit_code": 0,
+    "usage": {
+      "model": "gpt-6.2-sol",
+      "provider": "openai-codex",
+      "input_tokens": 556356,
+      "output_tokens": 13831,
+      "cache_read_tokens": 400640,
+      "reasoning_tokens": 6807,
+      "total_tokens": 570187,
+      "api_calls": 21,
+      "cost_status": "included",
+      "completed": true,
+      "partial": false,
+      "failed": false,
+      "turn_exit_reason": "text_response(finish_reason=stop)",
+      "auxiliary": {
+        "api_calls": 1,
+        "input_tokens": 312,
+        "output_tokens": 19,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "estimated_cost_usd": 0,
+        "total_tokens": 331,
+        "by_task": {
+          "title_generation": {
+            "api_calls": 1,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": 0,
+            "estimated_cost_usd": 0,
+            "input_tokens": 312,
+            "output_tokens": 19,
+            "reasoning_tokens": 0
+          }
+        }
+      },
+      "total_including_auxiliary": {
+        "estimated_cost_usd": 0.0,
+        "total_tokens": 570518,
+        "api_calls": 22
+      },
+      "uncached_input_tokens": 155716
+    },
+    "tools": 28,
+    "tool_names": {
+      "execute_code": 1,
+      "patch": 8,
+      "process_manage": 1,
+      "read_file": 5,
+      "search_files": 2,
+      "terminal": 8,
+      "tool_describe": 1,
+      "write_file": 2
+    },
+    "tests": {
+      "acceptance": {
+        "rc": 0,
+        "count": 30,
+        "failures": null
+      },
+      "numeric": {
+        "rc": 0,
+        "count": 6,
+        "failures": null
+      },
+      "own": {
+        "rc": 0,
+        "count": 16,
+        "failures": null
+      }
+    },
+    "stress": {
+      "updates": 2400,
+      "batch_size": 400,
+      "batch_seconds": [
+        0.026757850078865886,
+        0.0265125569421798,
+        0.02662388887256384,
+        0.026912725064903498,
+        0.026633623987436295,
+        0.026570755057036877
+      ],
+      "total_seconds": 0.1600114000029862,
+      "last_over_first": 0.9930078455003833
+    },
+    "motion_lines": 105,
+    "branch": "benchmark/review-gpt-6.2-sol",
+    "commit": "e3700fcf15de90f24bd7d2110524cb2c9c95d449",
+    "supplementary": {
+      "model": "gpt-6.2-sol",
+      "replay_rc": 0,
+      "mixed_stress": {
+        "updates": 2400,
+        "batch_size": 400,
+        "batch_seconds": [
+          0.027602405985817313,
+          0.02634732099249959,
+          0.026656068861484528,
+          0.027621316956356168,
+          0.02633780101314187,
+          0.02635160507634282
+        ],
+        "total_seconds": 0.1609165188856423,
+        "last_over_first": 0.954685076724211
+      }
+    },
+    "state_machine_replay_passed": true
+  },
+  {
+    "round": 2,
+    "model": "gpt-6.1-sol",
+    "base": "575e6b942b8c380a9017ecb6ec8f804c47030cff",
+    "seconds": 462.35,
+    "exit_code": 0,
+    "usage": {
+      "model": "gpt-6.1-sol",
+      "provider": "openai-codex",
+      "input_tokens": 573501,
+      "output_tokens": 13295,
+      "cache_read_tokens": 532864,
+      "reasoning_tokens": 4054,
+      "total_tokens": 586796,
+      "api_calls": 23,
+      "cost_status": "included",
+      "completed": true,
+      "partial": false,
+      "failed": false,
+      "turn_exit_reason": "text_response(finish_reason=stop)",
+      "auxiliary": {
+        "api_calls": 1,
+        "input_tokens": 312,
+        "output_tokens": 19,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "estimated_cost_usd": 0,
+        "total_tokens": 331,
+        "by_task": {
+          "title_generation": {
+            "api_calls": 1,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": 0,
+            "estimated_cost_usd": 0,
+            "input_tokens": 312,
+            "output_tokens": 19,
+            "reasoning_tokens": 0
+          }
+        }
+      },
+      "total_including_auxiliary": {
+        "estimated_cost_usd": 0.0,
+        "total_tokens": 587127,
+        "api_calls": 24
+      },
+      "uncached_input_tokens": 40637
+    },
+    "tools": 29,
+    "tool_names": {
+      "patch": 8,
+      "read_file": 5,
+      "search_files": 1,
+      "terminal": 11,
+      "write_file": 4
+    },
+    "tests": {
+      "acceptance": {
+        "rc": 0,
+        "count": 30,
+        "failures": null
+      },
+      "numeric": {
+        "rc": 0,
+        "count": 6,
+        "failures": null
+      },
+      "own": {
+        "rc": 0,
+        "count": 19,
+        "failures": null
+      }
+    },
+    "stress": {
+      "updates": 2400,
+      "batch_size": 400,
+      "batch_seconds": [
+        0.02727007190696895,
+        0.027079856023192406,
+        0.026909666135907173,
+        0.02689411398023367,
+        0.026775130070745945,
+        0.027006113901734352
+      ],
+      "total_seconds": 0.1619349520187825,
+      "last_over_first": 0.9903205973884086
+    },
+    "motion_lines": 135,
+    "branch": "benchmark/review-gpt-6.1-sol",
+    "commit": "1e5ac5adfd8b05c4f61e948c4491971589260e3d",
+    "supplementary": {
+      "model": "gpt-6.1-sol",
+      "replay_rc": 0,
+      "mixed_stress": {
+        "updates": 2400,
+        "batch_size": 400,
+        "batch_seconds": [
+          0.02693205582909286,
+          0.02648362796753645,
+          0.02661128807812929,
+          0.026612574933096766,
+          0.02684638905338943,
+          0.026684165932238102
+        ],
+        "total_seconds": 0.1601701017934829,
+        "last_over_first": 0.9907957306182702
+      }
+    },
+    "state_machine_replay_passed": true
+  },
+  {
+    "round": 2,
+    "model": "gpt-6-luna",
+    "base": "575e6b942b8c380a9017ecb6ec8f804c47030cff",
+    "seconds": 352.11,
+    "exit_code": 0,
+    "usage": {
+      "model": "gpt-6-luna",
+      "provider": "openai-codex",
+      "input_tokens": 852391,
+      "output_tokens": 11221,
+      "cache_read_tokens": 783232,
+      "reasoning_tokens": 4097,
+      "total_tokens": 863612,
+      "api_calls": 33,
+      "cost_status": "included",
+      "completed": true,
+      "partial": false,
+      "failed": false,
+      "turn_exit_reason": "text_response(finish_reason=stop)",
+      "auxiliary": {
+        "api_calls": 1,
+        "input_tokens": 312,
+        "output_tokens": 12,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": 0,
+        "reasoning_tokens": 0,
+        "estimated_cost_usd": 0,
+        "total_tokens": 324,
+        "by_task": {
+          "title_generation": {
+            "api_calls": 1,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": 0,
+            "estimated_cost_usd": 0,
+            "input_tokens": 312,
+            "output_tokens": 12,
+            "reasoning_tokens": 0
+          }
+        }
+      },
+      "total_including_auxiliary": {
+        "estimated_cost_usd": 0.0,
+        "total_tokens": 863936,
+        "api_calls": 34
+      },
+      "uncached_input_tokens": 69159
+    },
+    "tools": 39,
+    "tool_names": {
+      "patch": 12,
+      "read_file": 6,
+      "search_files": 1,
+      "terminal": 16,
+      "write_file": 4
+    },
+    "tests": {
+      "acceptance": {
+        "rc": 0,
+        "count": 30,
+        "failures": null
+      },
+      "numeric": {
+        "rc": 1,
+        "count": 6,
+        "failures": "failures=1"
+      },
+      "own": {
+        "rc": 0,
+        "count": 13,
+        "failures": null
+      }
+    },
+    "stress": {
+      "updates": 2400,
+      "batch_size": 400,
+      "batch_seconds": [
+        0.0062157460488379,
+        0.006063514854758978,
+        0.006183160934597254,
+        0.00607157195918262,
+        0.006069930968806148,
+        0.006152352783828974
+      ],
+      "total_seconds": 0.03675627755001187,
+      "last_over_first": 0.9898011816263346
+    },
+    "motion_lines": 124,
+    "branch": "benchmark/review-gpt-6-luna",
+    "commit": "397a2586037ad0337da82e88d8000ad7ecf9ac9a",
+    "supplementary": {
+      "model": "gpt-6-luna",
+      "replay_rc": 0,
+      "mixed_stress": {
+        "updates": 2400,
+        "batch_size": 400,
+        "batch_seconds": [
+          0.07955392100848258,
+          0.1813990301452577,
+          0.28439705702476203,
+          0.38644884689711034,
+          0.4924555930774659,
+          0.5937692350707948
+        ],
+        "total_seconds": 2.0180236832238734,
+        "last_over_first": 7.463733120174971
+      }
+    },
+    "state_machine_replay_passed": true
+  }
+]

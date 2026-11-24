@@ -1,0 +1,6 @@
+test_seeded_state_machine (__main__.Replay.test_seeded_state_machine) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.075s
+
+OK
