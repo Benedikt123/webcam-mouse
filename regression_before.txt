@@ -1,0 +1,21 @@
+test_continuous_stream_has_bounded_filter_state (test_continuous.ContinuousTests.test_continuous_stream_has_bounded_filter_state) ... FAIL
+test_exact_jump_boundary_not_rounded_by_filter (test_continuous.ContinuousTests.test_exact_jump_boundary_not_rounded_by_filter) ... ok
+test_extreme_smoothing_does_not_underflow_or_round_to_one (test_continuous.ContinuousTests.test_extreme_smoothing_does_not_underflow_or_round_to_one) ... ok
+test_huge_and_tiny_finite_inputs_remain_accepted (test_continuous.ContinuousTests.test_huge_and_tiny_finite_inputs_remain_accepted) ... ok
+test_huge_coordinates_and_threshold_geometry_remain_exact (test_continuous.ContinuousTests.test_huge_coordinates_and_threshold_geometry_remain_exact) ... ok
+
+======================================================================
+FAIL: test_continuous_stream_has_bounded_filter_state (test_continuous.ContinuousTests.test_continuous_stream_has_bounded_filter_state)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/hermesbene/workspace/projects/webcam-mouse-benchmark-evidence/review-gpt-6.1-sol/tests/test_continuous.py", line 31, in test_continuous_stream_has_bounded_filter_state
+    self.assertLessEqual(largest_bits, 1075,
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+                         'recursive exact fractions grow with stream length')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 324044 not less than or equal to 1075 : recursive exact fractions grow with stream length
+
+----------------------------------------------------------------------
+Ran 5 tests in 12.763s
+
+FAILED (failures=1)

@@ -1,0 +1,130 @@
+{
+  "label": "before",
+  "python": "3.14.9",
+  "platform": "Linux-7.0.0-42-generic-x86_64-with-glibc2.43",
+  "updates_per_run": 6000,
+  "repeats": 3,
+  "sensitivity": 1.5,
+  "smoothing": 0.3,
+  "max_jump": 100.0,
+  "runs": [
+    {
+      "seconds": 11.824149299878627,
+      "batches": [
+        {
+          "end_update": 1000,
+          "seconds": 0.38165378593839705,
+          "output_bits": 54044
+        },
+        {
+          "end_update": 2000,
+          "seconds": 1.016600072849542,
+          "output_bits": 108044
+        },
+        {
+          "end_update": 3000,
+          "seconds": 1.6490245410241187,
+          "output_bits": 162044
+        },
+        {
+          "end_update": 4000,
+          "seconds": 2.2941707619465888,
+          "output_bits": 216044
+        },
+        {
+          "end_update": 5000,
+          "seconds": 2.9242037078365684,
+          "output_bits": 270044
+        },
+        {
+          "end_update": 6000,
+          "seconds": 3.5583932131994516,
+          "output_bits": 324044
+        }
+      ],
+      "final_output": [
+        0.3803627748841387,
+        0.6008889201061232
+      ]
+    },
+    {
+      "seconds": 11.763281341874972,
+      "batches": [
+        {
+          "end_update": 1000,
+          "seconds": 0.37646300718188286,
+          "output_bits": 54044
+        },
+        {
+          "end_update": 2000,
+          "seconds": 1.0104642021469772,
+          "output_bits": 108044
+        },
+        {
+          "end_update": 3000,
+          "seconds": 1.6448815430048853,
+          "output_bits": 162044
+        },
+        {
+          "end_update": 4000,
+          "seconds": 2.2844011548440903,
+          "output_bits": 216044
+        },
+        {
+          "end_update": 5000,
+          "seconds": 2.9112698449753225,
+          "output_bits": 270044
+        },
+        {
+          "end_update": 6000,
+          "seconds": 3.5357174819801003,
+          "output_bits": 324044
+        }
+      ],
+      "final_output": [
+        0.3803627748841387,
+        0.6008889201061232
+      ]
+    },
+    {
+      "seconds": 11.756914502941072,
+      "batches": [
+        {
+          "end_update": 1000,
+          "seconds": 0.37625930015929043,
+          "output_bits": 54044
+        },
+        {
+          "end_update": 2000,
+          "seconds": 1.0127801259513944,
+          "output_bits": 108044
+        },
+        {
+          "end_update": 3000,
+          "seconds": 1.6392028059344739,
+          "output_bits": 162044
+        },
+        {
+          "end_update": 4000,
+          "seconds": 2.2785180378705263,
+          "output_bits": 216044
+        },
+        {
+          "end_update": 5000,
+          "seconds": 2.9144405080005527,
+          "output_bits": 270044
+        },
+        {
+          "end_update": 6000,
+          "seconds": 3.535632438957691,
+          "output_bits": 324044
+        }
+      ],
+      "final_output": [
+        0.3803627748841387,
+        0.6008889201061232
+      ]
+    }
+  ],
+  "median_seconds": 11.763281341874972
+}
