@@ -20,7 +20,9 @@ A squared Euclidean distance test on the raw delta avoids a square root. A displ
 
 ## Numeric behavior and limitations
 
-Inputs use Python's `numbers.Real` interface, excluding booleans and nonfinite values. Rational inputs are preserved exactly; other real inputs are taken at their Python `float` value. Internal arithmetic uses `fractions.Fraction`, so a large integer coordinate can still resolve a one-unit step. The returned tuple can contain `Fraction` values, not necessarily floats. With smoothing below one, exact output denominators can grow over a long uninterrupted stream, increasing arithmetic cost. No real-time latency guarantee is made.
+Inputs use Python's `numbers.Real` interface, excluding booleans and nonfinite values. Rational inputs are preserved exactly; other real inputs are taken at their Python `float` value. The baseline, jump comparison and scaled deltas use `fractions.Fraction`, so even a large integer coordinate can resolve a one-unit step. The returned tuple can contain `Fraction` values, not necessarily floats.
+
+Only the feedback blend has limited precision. On each axis, the denominator bit budget is 64 guard bits plus the bit lengths of the smoothing denominator and the largest scaled-delta denominator since the last history clear. If the blend exceeds that budget, it is stored and returned rounded to the nearest multiple of `2**-budget` (ties to even). For fixed input sizes this prevents the history from getting larger simply because more frames arrived. Unsmoothed deltas remain exact. Smoothed output has bounded absolute, not relative, error; near zero a small residual may persist or disappear. Very large inputs or exceptionally precise fractions can still be expensive. No real-time latency guarantee is made. See `REVIEW.md` for the error bound and measurements.
 
 This is a synchronous, standard-library motion core. It does not capture video, read a clock, click, or move an OS pointer.
 
@@ -32,10 +34,10 @@ Command (from this directory, Python 3.14.9):
 python -m unittest discover -s tests -v
 ```
 
-Tests were written and run before `motion.py` existed. The first run exited 1 with `ModuleNotFoundError: No module named 'motion'` and `FAILED (errors=1)`. After implementation, every listed test reported `ok`; the run exited 0:
+The inherited suite passed before review (11 tests). With the new continuous-stream regression and the inherited implementation, one of 12 tests failed as expected. After repair and the additional numeric edge cases, the command exited 0:
 
 ```text
-Ran 11 tests in 0.005s
+Ran 14 tests in 0.204s
 
 OK
 ```

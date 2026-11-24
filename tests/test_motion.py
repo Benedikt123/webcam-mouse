@@ -6,6 +6,26 @@ from motion import MotionTracker
 
 
 class MotionTests(unittest.TestCase):
+    def test_continuous_smoothing_has_compact_feedback(self):
+        tracker = MotionTracker(sensitivity=1.25, smoothing=0.3)
+        previous = (320.0, 240.0)
+        output = tracker.update(previous)
+        expected = (0.0, 0.0)
+        for i in range(1, 3001):
+            point = (320.0 + (i % 23) * 0.125, 240.0 - (i % 17) * 0.25)
+            expected = tuple(0.3 * (1.25 * (p - q)) + 0.7 * e
+                             for p, q, e in zip(point, previous, expected))
+            output = tracker.update(point)
+            for got, want in zip(output, expected):
+                self.assertAlmostEqual(float(got), want, delta=1e-9)
+            previous = point
+
+        # Deterministic size check, not a latency threshold tied to this host.
+        # Even binary64 subnormals need at most 1075 denominator bits.
+        for value in output:
+            n, d = value.as_integer_ratio()
+            self.assertLessEqual(max(n.bit_length(), d.bit_length()), 2048)
+
     def test_baseline_and_relative_motion(self):
         tracker = MotionTracker()
         point = [10.0, -2.0]
@@ -102,3 +122,24 @@ class MotionTests(unittest.TestCase):
         tracker = MotionTracker(max_jump=base)
         tracker.update((base, -base))
         self.assertEqual(tracker.update((base+1, 1-base)), (1, 1))
+
+    def test_extreme_gains_and_scaled_motion(self):
+        # Neither the small gain nor the large accepted movement fits a float.
+        big = 10**400
+        tracker = MotionTracker(sensitivity=big, smoothing=Fraction(1, big),
+                                max_jump=big + 1)
+        tracker.update((0, 0))
+        self.assertEqual(tracker.update((big, Fraction(1, big))),
+                         (big, Fraction(1, big)))
+        x, y = tracker.update((big, Fraction(1, big)))
+        self.assertEqual(x, big - 1)
+        expected = Fraction(big - 1, big**2)
+        self.assertLess(abs(y - expected), expected / 10**18)
+
+    def test_jump_just_outside_circle_at_float_resolution(self):
+        tracker = MotionTracker(smoothing=0.3, max_jump=1)
+        tracker.update((0, 0))
+        # sqrt(1 + epsilon**2) would round to 1.0 in binary64.
+        epsilon = 2.0**-52
+        self.assertEqual(tracker.update((1, epsilon)), (0, 0))
+        self.assertEqual(tracker.update((2, epsilon)), (0.3, 0))

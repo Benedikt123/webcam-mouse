@@ -5,6 +5,8 @@ from numbers import Rational, Real
 
 
 _ZERO = (0, 0)
+# Extra fractional bits beyond the resolution of the scaled input and gain.
+_GUARD_BITS = 64
 
 
 def _finite_real(value, name):
@@ -33,13 +35,19 @@ class MotionTracker:
         if max_jump <= 0:
             raise ValueError('max_jump must be positive')
         self._max_jump_squared = max_jump * max_jump
+        self._retention = 1 - self._smoothing
+        self._base_bits = _GUARD_BITS + self._smoothing.denominator.bit_length()
         self._paused = False
         self.reset()
+
+    def _clear_output(self):
+        self._output = _ZERO
+        self._x_bits = self._y_bits = self._base_bits
 
     def reset(self):
         """Forget position and filter history without changing pause status."""
         self._position = None
-        self._output = _ZERO
+        self._clear_output()
 
     def pause(self):
         self.reset()
@@ -48,6 +56,16 @@ class MotionTracker:
     def resume(self):
         self.reset()
         self._paused = False
+
+    def _blend(self, scaled, previous, bits):
+        # Size history by peak input precision on this axis, not frame count.
+        bits = max(bits, self._base_bits + scaled.denominator.bit_length())
+        value = self._smoothing * scaled + self._retention * previous
+        if value.denominator.bit_length() > bits:
+            # Round only filter history, never coordinates or threshold geometry.
+            unit = 1 << bits
+            value = Fraction(round(value * unit), unit)
+        return value, bits
 
     def update(self, position):
         """Consume one sample (None for loss); reject malformed samples atomically."""
@@ -67,10 +85,11 @@ class MotionTracker:
             return _ZERO
         dx, dy = x - previous[0], y - previous[1]
         if dx * dx + dy * dy > self._max_jump_squared:
-            self._output = _ZERO
+            self._clear_output()
         else:
             sx, sy = self._sensitivity * dx, self._sensitivity * dy
-            a = self._smoothing
             ox, oy = self._output
-            self._output = (a * sx + (1 - a) * ox, a * sy + (1 - a) * oy)
+            ox, self._x_bits = self._blend(sx, ox, self._x_bits)
+            oy, self._y_bits = self._blend(sy, oy, self._y_bits)
+            self._output = ox, oy
         return self._output
