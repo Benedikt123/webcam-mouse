@@ -20,7 +20,7 @@ A squared Euclidean distance test on the raw delta avoids a square root. A displ
 
 ## Numeric behavior and limitations
 
-Inputs use Python's `numbers.Real` interface, excluding booleans and nonfinite values. Rational inputs are preserved exactly; other real inputs are taken at their Python `float` value. Internal arithmetic uses `fractions.Fraction`, so a large integer coordinate can still resolve a one-unit step. The returned tuple can contain `Fraction` values, not necessarily floats. With smoothing below one, exact output denominators can grow over a long uninterrupted stream, increasing arithmetic cost. No real-time latency guarantee is made.
+Inputs use Python's `numbers.Real` interface, excluding booleans and nonfinite values. Rational inputs remain exact; non-rational inputs are first represented at their Python `float` value. For ordinary non-rational camera-coordinate samples, the filter state and returned outputs use binary floats, avoiding unbounded exact-fraction denominator growth. Rational-coordinate streams continue using exact Fraction arithmetic. Extreme magnitudes whose float intermediates overflow fall back to exact arithmetic where possible. Float outputs are numerically equivalent to the specified formula within normal floating-point rounding, not exact rational results. This trades exact binary-float-as-rational output for bounded per-update work on common camera streams; exact rational inputs and very large integer coordinate differences remain supported. No real-time latency guarantee is made.
 
 This is a synchronous, standard-library motion core. It does not capture video, read a clock, click, or move an OS pointer.
 
@@ -32,12 +32,4 @@ Command (from this directory, Python 3.14.9):
 python -m unittest discover -s tests -v
 ```
 
-Tests were written and run before `motion.py` existed. The first run exited 1 with `ModuleNotFoundError: No module named 'motion'` and `FAILED (errors=1)`. After implementation, every listed test reported `ok`; the run exited 0:
-
-```text
-Ran 11 tests in 0.005s
-
-OK
-```
-
-Only the local suite was run; the controller's independent suite was not inspected or executed.
+The inherited suite had 11 tests. The added float-stream bounded-state regression first failed against the inherited implementation (it returned Fraction outputs rather than bounded float state). The final suite includes that regression and a 500-update exact-formula comparison; all 13 tests passed (`Ran 13 tests`, `OK`). The controller's independent suite was not inspected or run.

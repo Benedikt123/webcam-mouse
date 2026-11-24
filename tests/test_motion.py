@@ -102,3 +102,27 @@ class MotionTests(unittest.TestCase):
         tracker = MotionTracker(max_jump=base)
         tracker.update((base, -base))
         self.assertEqual(tracker.update((base+1, 1-base)), (1, 1))
+
+    def test_float_camera_stream_keeps_bounded_numeric_state(self):
+        tracker = MotionTracker(smoothing=0.3)
+        tracker.update((0.0, 0.0))
+        output = tracker.update((0.1, -0.1))
+        self.assertIsInstance(output[0], float)
+        self.assertIsInstance(output[1], float)
+
+    def test_float_stream_matches_exact_formula_within_tolerance(self):
+        tracker = MotionTracker(sensitivity=1.25, smoothing=0.3, max_jump=10)
+        previous = (Fraction(0), Fraction(0))
+        expected = (Fraction(0), Fraction(0))
+        tracker.update((0.0, 0.0))
+        for index in range(1, 501):
+            point = (index * 0.01, (index % 13) * 0.02)
+            exact_point = tuple(Fraction.from_float(value) for value in point)
+            dx = exact_point[0] - previous[0]
+            dy = exact_point[1] - previous[1]
+            expected = (Fraction(3, 10) * Fraction(5, 4) * dx + Fraction(7, 10) * expected[0],
+                        Fraction(3, 10) * Fraction(5, 4) * dy + Fraction(7, 10) * expected[1])
+            actual = tracker.update(point)
+            self.assertAlmostEqual(actual[0], float(expected[0]), delta=1e-9)
+            self.assertAlmostEqual(actual[1], float(expected[1]), delta=1e-9)
+            previous = exact_point

@@ -2,6 +2,7 @@
 
 from fractions import Fraction
 from numbers import Rational, Real
+import math
 
 
 _ZERO = (0, 0)
@@ -61,10 +62,57 @@ class MotionTracker:
         if self._paused:
             return _ZERO
 
+        # Camera coordinates are normally floats. Keep their filter state in
+        # binary floating point instead of growing exact fractions forever.
+        if (not isinstance(position[0], Rational)
+                and not isinstance(position[1], Rational)
+                and (self._position is None
+                     or all(isinstance(value, float) for value in self._position))):
+            try:
+                fx, fy = float(x), float(y)
+                sensitivity = float(self._sensitivity)
+                smoothing = float(self._smoothing)
+                max_jump_squared = float(self._max_jump_squared)
+                if not math.isfinite(max_jump_squared):
+                    raise OverflowError
+            except OverflowError:
+                pass
+            else:
+                previous = self._position
+                if previous is not None:
+                    previous = (float(previous[0]), float(previous[1]))
+                self._position = (fx, fy)
+                if previous is None:
+                    return _ZERO
+                dx, dy = fx - previous[0], fy - previous[1]
+                if math.hypot(dx, dy) > math.sqrt(max_jump_squared):
+                    self._output = _ZERO
+                else:
+                    ox, oy = self._output
+                    output = (smoothing * sensitivity * dx + (1 - smoothing) * ox,
+                              smoothing * sensitivity * dy + (1 - smoothing) * oy)
+                    if math.isfinite(output[0]) and math.isfinite(output[1]):
+                        self._output = output
+                    else:
+                        # Retain exact behavior for extreme finite values whose
+                        # intermediate floating-point arithmetic overflows.
+                        self._position = (x, y)
+                        previous = None if previous is None else tuple(Fraction(v) for v in previous)
+                        self._output = tuple(Fraction(v) for v in self._output)
+                        if previous is None:
+                            return _ZERO
+                        return self._exact_update(x, y, previous)
+                return self._output
+
         previous = self._position
+        if previous is not None:
+            previous = tuple(Fraction(v) for v in previous)
         self._position = (x, y)
         if previous is None:
             return _ZERO
+        return self._exact_update(x, y, previous)
+
+    def _exact_update(self, x, y, previous):
         dx, dy = x - previous[0], y - previous[1]
         if dx * dx + dy * dy > self._max_jump_squared:
             self._output = _ZERO
